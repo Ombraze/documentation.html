@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation JavaScript pour Débutants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        nav {
+            background: #2c3e50;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: #34495e;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f5576c;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #f5576c;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        .exemple {
+            background: #e8f5e9;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .attention {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .astuce {
+            background: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Documentation JavaScript</h1>
+            <p>Guide complet pour débutants</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#variables">Variables</a></li>
+                <li><a href="#types">Types de données</a></li>
+                <li><a href="#operateurs">Opérateurs</a></li>
+                <li><a href="#conditions">Conditions</a></li>
+                <li><a href="#boucles">Boucles</a></li>
+                <li><a href="#fonctions">Fonctions</a></li>
+                <li><a href="#tableaux">Tableaux</a></li>
+                <li><a href="#objets">Objets</a></li>
+                <li><a href="#dom">DOM</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <section id="intro">
+                <h2>🚀 Introduction à JavaScript</h2>
+                <p>JavaScript est un langage de programmation qui permet de rendre les pages web interactives. C'est l'un des trois piliers du développement web avec HTML (structure) et CSS (apparence).</p>
+                
+                <h3>Comment utiliser JavaScript ?</h3>
+                <p>Il existe trois façons d'inclure du JavaScript dans une page web :</p>
+                
+                <div class="exemple">
+                    <strong>1. JavaScript inline (dans les balises HTML) :</strong>
+                    <pre><code>&lt;button onclick="alert('Bonjour !')"&gt;Cliquez-moi&lt;/button&gt;</code></pre>
+                </div>
+                
+                <div class="exemple">
+                    <strong>2. JavaScript interne (dans la balise &lt;script&gt;) :</strong>
+                    <pre><code>&lt;script&gt;
+    console.log('Bonjour le monde !');
+&lt;/script&gt;</code></pre>
+                </div>
+                
+                <div class="exemple">
+                    <strong>3. JavaScript externe (fichier .js séparé) :</strong>
+                    <pre><code>&lt;script src="monscript.js"&gt;&lt;/script&gt;</code></pre>
+                </div>
+            </section>
+            
+            <section id="variables">
+                <h2>📦 Les Variables</h2>
+                <p>Les variables sont des conteneurs qui stockent des données. En JavaScript, on peut déclarer des variables avec <code>let</code>, <code>const</code> ou <code>var</code>.</p>
+                
+                <h3>let - Variable modifiable</h3>
+                <pre><code>let prenom = "Marie";
+prenom = "Jean"; // ✅ OK
+console.log(prenom); // Affiche: Jean</code></pre>
+                
+                <h3>const - Variable constante (non modifiable)</h3>
+                <pre><code>const age = 25;
+age = 30; // ❌ ERREUR
+console.log(age);</code></pre>
+                
+                <h3>var - Ancienne méthode (à éviter)</h3>
+                <pre><code>var ville = "Paris";
+// Évitez d'utiliser var, préférez let ou const</code></pre>
+                
+                <div class="astuce">
+                    <strong>💡 Astuce :</strong> Utilisez <code>const</code> par défaut, et <code>let</code> uniquement si vous devez modifier la valeur.
+                </div>
+            </section>
+            
+            <section id="types">
+                <h2>🎨 Types de Données</h2>
+                
+                <h3>1. String (Chaîne de caractères)</h3>
+                <pre><code>let message = "Bonjour";
+let nom = 'Claude';
+let phrase = `Je m'appelle ${nom}`; // Template literal</code></pre>
+                
+                <h3>2. Number (Nombre)</h3>
+                <pre><code>let entier = 42;
+let decimal = 3.14;
+let negatif = -7;</code></pre>
+                
+                <h3>3. Boolean (Booléen)</h3>
+                <pre><code>let estVrai = true;
+let estFaux = false;</code></pre>
+                
+                <h3>4. Undefined et Null</h3>
+                <pre><code>let nonDefini; // undefined
+let vide = null; // null</code></pre>
+                
+                <h3>Vérifier le type</h3>
+                <pre><code>console.log(typeof "Bonjour"); // "string"
+console.log(typeof 42); // "number"
+console.log(typeof true); // "boolean"</code></pre>
+            </section>
+            
+            <section id="operateurs">
+                <h2>➕ Opérateurs</h2>
+                
+                <h3>Opérateurs arithmétiques</h3>
+                <table>
+                    <tr>
+                        <th>Opérateur</th>
+                        <th>Description</th>
+                        <th>Exemple</th>
+                    </tr>
+                    <tr>
+                        <td>+</td>
+                        <td>Addition</td>
+                        <td>5 + 3 = 8</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>Soustraction</td>
+                        <td>5 - 3 = 2</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Multiplication</td>
+                        <td>5 * 3 = 15</td>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>Division</td>
+                        <td>6 / 3 = 2</td>
+                    </tr>
+                    <tr>
+                        <td>%</td>
+                        <td>Modulo (reste)</td>
+                        <td>5 % 2 = 1</td>
+                    </tr>
+                    <tr>
+                        <td>**</td>
+                        <td>Puissance</td>
+                        <td>2 ** 3 = 8</td>
+                    </tr>
+                </table>
+                
+                <h3>Opérateurs de comparaison</h3>
+                <pre><code>5 == "5"   // true (égalité faible)
+5 === "5"  // false (égalité stricte)
+5 != "5"   // false
+5 !== "5"  // true
+5 > 3      // true
+5 < 3      // false
+5 >= 5     // true
+5 <= 4     // false</code></pre>
+                
+                <div class="attention">
+                    <strong>⚠️ Attention :</strong> Utilisez toujours <code>===</code> et <code>!==</code> pour éviter les surprises !
+                </div>
+            </section>
+            
+            <section id="conditions">
+                <h2>🔀 Conditions</h2>
+                
+                <h3>if / else</h3>
+                <pre><code>let age = 18;
+
+if (age >= 18) {
+    console.log("Vous êtes majeur");
+} else {
+    console.log("Vous êtes mineur");
+}</code></pre>
+                
+                <h3>else if</h3>
+                <pre><code>let note = 15;
+
+if (note >= 16) {
+    console.log("Très bien");
+} else if (note >= 14) {
+    console.log("Bien");
+} else if (note >= 10) {
+    console.log("Assez bien");
+} else {
+    console.log("Insuffisant");
+}</code></pre>
+                
+                <h3>Opérateur ternaire</h3>
+                <pre><code>let age = 20;
+let statut = age >= 18 ? "majeur" : "mineur";
+console.log(statut); // "majeur"</code></pre>
+                
+                <h3>switch</h3>
+                <pre><code>let jour = "lundi";
+
+switch (jour) {
+    case "lundi":
+        console.log("Début de semaine");
+        break;
+    case "vendredi":
+        console.log("Bientôt le weekend !");
+        break;
+    case "samedi":
+    case "dimanche":
+        console.log("C'est le weekend !");
+        break;
+    default:
+        console.log("Jour normal");
+}</code></pre>
+            </section>
+            
+            <section id="boucles">
+                <h2>🔄 Boucles</h2>
+                
+                <h3>Boucle for</h3>
+                <pre><code>for (let i = 0; i < 5; i++) {
+    console.log(i); // Affiche 0, 1, 2, 3, 4
+}</code></pre>
+                
+                <h3>Boucle while</h3>
+                <pre><code>let compteur = 0;
+
+while (compteur < 5) {
+    console.log(compteur);
+    compteur++;
+}</code></pre>
+                
+                <h3>Boucle do...while</h3>
+                <pre><code>let nombre = 0;
+
+do {
+    console.log(nombre);
+    nombre++;
+} while (nombre < 5);</code></pre>
+                
+                <h3>for...of (pour les tableaux)</h3>
+                <pre><code>let fruits = ["pomme", "banane", "orange"];
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}</code></pre>
+            </section>
+            
+            <section id="fonctions">
+                <h2>⚙️ Fonctions</h2>
+                
+                <h3>Déclaration classique</h3>
+                <pre><code>function direBonjour(nom) {
+    return "Bonjour " + nom;
+}
+
+console.log(direBonjour("Marie")); // "Bonjour Marie"</code></pre>
+                
+                <h3>Fonction avec plusieurs paramètres</h3>
+                <pre><code>function additionner(a, b) {
+    return a + b;
+}
+
+let resultat = additionner(5, 3);
+console.log(resultat); // 8</code></pre>
+                
+                <h3>Fonction fléchée (arrow function)</h3>
+                <pre><code>const multiplier = (a, b) => {
+    return a * b;
+}
+
+// Version courte (si une seule ligne)
+const doubler = x => x * 2;
+
+console.log(doubler(5)); // 10</code></pre>
+                
+                <h3>Paramètres par défaut</h3>
+                <pre><code>function saluer(nom = "visiteur") {
+    return `Bonjour ${nom} !`;
+}
+
+console.log(saluer()); // "Bonjour visiteur !"
+console.log(saluer("Paul")); // "Bonjour Paul !"</code></pre>
+            </section>
+            
+            <section id="tableaux">
+                <h2>📋 Tableaux (Arrays)</h2>
+                
+                <h3>Créer un tableau</h3>
+                <pre><code>let fruits = ["pomme", "banane", "orange"];
+let nombres = [1, 2, 3, 4, 5];
+let mixte = ["texte", 42, true];</code></pre>
+                
+                <h3>Accéder aux éléments</h3>
+                <pre><code>console.log(fruits[0]); // "pomme"
+console.log(fruits[2]); // "orange"</code></pre>
+                
+                <h3>Méthodes principales</h3>
+                <pre><code>// Ajouter à la fin
+fruits.push("fraise");
+
+// Retirer du début
+fruits.shift();
+
+// Ajouter au début
+fruits.unshift("kiwi");
+
+// Retirer de la fin
+fruits.pop();
+
+// Longueur du tableau
+console.log(fruits.length);
+
+// Trouver un élément
+let index = fruits.indexOf("banane");</code></pre>
+                
+                <h3>Parcourir un tableau</h3>
+                <pre><code>// forEach
+fruits.forEach(function(fruit) {
+    console.log(fruit);
+});
+
+// map (crée un nouveau tableau)
+let majuscules = fruits.map(fruit => fruit.toUpperCase());
+
+// filter (filtre les éléments)
+let nombres = [1, 2, 3, 4, 5];
+let pairs = nombres.filter(n => n % 2 === 0); // [2, 4]</code></pre>
+            </section>
+            
+            <section id="objets">
+                <h2>🎁 Objets</h2>
+                
+                <h3>Créer un objet</h3>
+                <pre><code>let personne = {
+    nom: "Dupont",
+    prenom: "Jean",
+    age: 30,
+    ville: "Paris"
+};</code></pre>
+                
+                <h3>Accéder aux propriétés</h3>
+                <pre><code>// Notation point
+console.log(personne.nom); // "Dupont"
+
+// Notation crochets
+console.log(personne["prenom"]); // "Jean"</code></pre>
+                
+                <h3>Modifier une propriété</h3>
+                <pre><code>personne.age = 31;
+personne["ville"] = "Lyon";</code></pre>
+                
+                <h3>Ajouter une propriété</h3>
+                <pre><code>personne.email = "jean@example.com";</code></pre>
+                
+                <h3>Méthodes dans les objets</h3>
+                <pre><code>let voiture = {
+    marque: "Renault",
+    modele: "Clio",
+    annee: 2020,
+    demarrer: function() {
+        console.log("La voiture démarre !");
+    }
+};
+
+voiture.demarrer(); // "La voiture démarre !"</code></pre>
+            </section>
+            
+            <section id="dom">
+                <h2>🌐 Manipulation du DOM</h2>
+                <p>Le DOM (Document Object Model) permet d'interagir avec les éléments HTML.</p>
+                
+                <h3>Sélectionner des éléments</h3>
+                <pre><code>// Par ID
+let element = document.getElementById("monId");
+
+// Par classe
+let elements = document.getElementsByClassName("maClasse");
+
+// Par balise
+let paragraphes = document.getElementsByTagName("p");
+
+// Sélecteur CSS (le plus utilisé)
+let premier = document.querySelector(".maClasse");
+let tous = document.querySelectorAll(".maClasse");</code></pre>
+                
+                <h3>Modifier le contenu</h3>
+                <pre><code>let titre = document.querySelector("h1");
+titre.textContent = "Nouveau titre";
+titre.innerHTML = "&lt;strong&gt;Titre en gras&lt;/strong&gt;";</code></pre>
+                
+                <h3>Modifier le style</h3>
+                <pre><code>let boite = document.querySelector(".boite");
+boite.style.color = "red";
+boite.style.backgroundColor = "yellow";
+boite.style.fontSize = "20px";</code></pre>
+                
+                <h3>Ajouter/retirer des classes</h3>
+                <pre><code>element.classList.add("nouvelle-classe");
+element.classList.remove("ancienne-classe");
+element.classList.toggle("actif"); // Ajoute ou retire</code></pre>
+                
+                <h3>Événements</h3>
+                <pre><code>// Événement au clic
+let bouton = document.querySelector("button");
+bouton.addEventListener("click", function() {
+    alert("Bouton cliqué !");
+});
+
+// Événement sur un formulaire
+let formulaire = document.querySelector("form");
+formulaire.addEventListener("submit", function(e) {
+    e.preventDefault(); // Empêche le rechargement
+    console.log("Formulaire soumis");
+});</code></pre>
+                
+                <h3>Créer et ajouter des éléments</h3>
+                <pre><code>// Créer un élément
+let nouveauP = document.createElement("p");
+nouveauP.textContent = "Nouveau paragraphe";
+
+// L'ajouter au DOM
+document.body.appendChild(nouveauP);</code></pre>
+                
+                <div class="exemple">
+                    <strong>Exemple complet :</strong>
+                    <pre><code>&lt;button id="monBouton"&gt;Cliquez-moi&lt;/button&gt;
+&lt;p id="compteur"&gt;0&lt;/p&gt;
+
+&lt;script&gt;
+let bouton = document.getElementById("monBouton");
+let compteur = document.getElementById("compteur");
+let compte = 0;
+
+bouton.addEventListener("click", function() {
+    compte++;
+    compteur.textContent = compte;
+});
+&lt;/script&gt;</code></pre>
+                </div>
+            </section>
+            
+            <section>
+                <h2>🎯 Conseils pour bien débuter</h2>
+                
+                <div class="astuce">
+                    <strong>1. Pratiquez régulièrement</strong><br>
+                    La programmation s'apprend en pratiquant. Essayez de coder un peu chaque jour.
+                </div>
+                
+                <div class="astuce">
+                    <strong>2. Utilisez la console</strong><br>
+                    <code>console.log()</code> est votre meilleur ami pour déboguer et comprendre ce qui se passe dans votre code.
+                </div>
+                
+                <div class="astuce">
+                    <strong>3. Lisez les messages d'erreur</strong><br>
+                    Les messages d'erreur vous indiquent où et pourquoi votre code ne fonctionne pas.
+                </div>
+                
+                <div class="astuce">
+                    <strong>4. Commentez votre code</strong><br>
+                    <pre><code>// Ceci est un commentaire sur une ligne
+
+/* 
+   Ceci est un commentaire
+   sur plusieurs lignes
+*/</code></pre>
+                </div>
+                
+                <div class="astuce">
+                    <strong>5. Ressources utiles</strong><br>
+                    • MDN Web Docs (documentation officielle)<br>
+                    • JavaScript.info (tutoriels détaillés)<br>
+                    • FreeCodeCamp (exercices pratiques)
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>📚 Documentation JavaScript pour Débutants | Bonne pratique ! 🚀</p>
+        </footer>
+    </div>
+</body>
+</html>
